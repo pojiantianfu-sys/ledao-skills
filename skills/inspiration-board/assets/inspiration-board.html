@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>对标灵感台 - {{ACCOUNT_NAME}}</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>{{ICON_CHAR}}</text></svg>">
+<style>
+  :root{
+    --bg:#f6f5f1; --paper:#fff; --ink:#1a1a1a; --ink-soft:#5a5a5a;
+    --line:#e6e3db; --accent:#0f6b5c; --accent-soft:#e6f2ef;
+    --tag:#f0ede5; --warn:#b85c2a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:32px 24px 80px}
+
+  header{background:var(--paper);border:1px solid var(--line);border-radius:14px;
+    padding:28px 32px;display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start}
+  .avatar{width:64px;height:64px;border-radius:50%;background:var(--accent);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;flex-shrink:0}
+  .head-main{flex:1;min-width:260px}
+  .head-main h1{font-size:22px;font-weight:700}
+  .head-main .handle{color:var(--ink-soft);font-size:13px;margin-top:2px}
+  .head-bio{margin-top:10px;font-size:14px;color:var(--ink-soft);max-width:680px}
+  .head-tags{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
+  .head-tags span{background:var(--accent-soft);color:var(--accent);font-size:12px;
+    padding:3px 10px;border-radius:20px}
+  .head-cta{flex-shrink:0;display:flex;flex-direction:column;gap:8px}
+  .btn{display:inline-block;padding:10px 18px;border-radius:8px;font-size:14px;
+    text-decoration:none;font-weight:500;text-align:center}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-ghost{background:transparent;border:1px solid var(--line);color:var(--ink-soft)}
+
+  nav{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px;position:sticky;top:0;
+    background:var(--bg);padding:14px 0;z-index:10}
+  nav a{text-decoration:none;color:var(--ink-soft);font-size:13px;
+    padding:7px 14px;border-radius:20px;background:var(--paper);border:1px solid var(--line)}
+
+  section{margin-top:36px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;flex-wrap:wrap}
+  .sec-num{font-size:13px;color:var(--accent);font-weight:700}
+  .sec-head h2{font-size:19px;font-weight:700}
+  .sec-fit{font-size:13px;color:var(--warn);margin-left:auto}
+  .sec-desc{font-size:13.5px;color:var(--ink-soft);margin-bottom:18px;max-width:760px}
+
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:20px 22px;text-decoration:none;color:var(--ink);
+    display:flex;flex-direction:column;gap:10px;transition:.15s}
+  .card:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+  .card h3{font-size:15.5px;font-weight:600;line-height:1.45;flex:1}
+  .go{flex-shrink:0;color:var(--accent);font-size:18px;background:var(--accent-soft);
+    width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .card p{font-size:13.5px;color:var(--ink-soft)}
+  .card-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+  .chip{font-size:11.5px;background:var(--tag);color:var(--ink-soft);padding:2px 8px;border-radius:4px}
+  .chip.hook{background:#fdeedd;color:var(--warn)}
+
+  .howto{margin-top:48px;background:var(--paper);border:1px solid var(--line);
+    border-radius:14px;padding:26px 30px}
+  .howto h2{font-size:16px;margin-bottom:12px}
+  .howto ol{padding-left:20px;font-size:14px;color:var(--ink-soft);display:flex;flex-direction:column;gap:8px}
+  footer{margin-top:30px;text-align:center;font-size:12px;color:#aaa}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 账号头部：填账号名、平台ID、简介、标签、主页链接 -->
+  <header>
+    <div class="avatar">{{ICON_CHAR}}</div>
+    <div class="head-main">
+      <h1>{{ACCOUNT_NAME}}</h1>
+      <div class="handle">{{PLATFORM_ID}}</div>
+      <div class="head-bio">{{ACCOUNT_BIO}}</div>
+      <div class="head-tags">{{TAGS}}</div>
+    </div>
+    <div class="head-cta">
+      <a class="btn btn-primary" href="{{PROFILE_URL}}" target="_blank" rel="noopener">进入主页</a>
+    </div>
+  </header>
+
+  <!-- 方向导航：5 个方向，缺的方向删掉对应 a -->
+  <nav>
+    <a href="#d1">01 认知升维</a>
+    <a href="#d2">02 做IP方法论</a>
+    <a href="#d3">03 组织/一人公司AI化</a>
+    <a href="#d4">04 变现/赚钱逻辑</a>
+    <a href="#d5">05 落地实操案例</a>
+  </nav>
+
+  <!-- ===== 方向 1：认知升维 ===== -->
+  <section id="d1">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <h2>认知升维</h2>
+      <span class="sec-fit">适合：想立"思想领袖"人设</span>
+    </div>
+    <p class="sec-desc">{{D1_DESC}}</p>
+    <div class="grid">
+      <!-- 每张卡片复制这一段，填标题、摘要、钩子、链接 -->
+      <a class="card" href="{{VIDEO_URL_1}}" target="_blank" rel="noopener">
+        <div class="card-top"><h3>{{VIDEO_TITLE_1}}</h3><span class="go">↗</span></div>
+        <p>{{VIDEO_DESC_1}}</p>
+        <div class="card-meta">
+          <span class="chip hook">钩子：{{HOOK_TYPE_1}}</span>
+          <span class="chip">{{TAG_1}}</span>
+        </div>
+      </a>
+      <!-- 更多卡片... -->
+    </div>
+  </section>
+
+  <!-- 方向 2-5 结构同上，按需复制 -->
+
+  <div class="howto">
+    <h2>怎么用这个灵感台</h2>
+    <ol>
+      <li><b>先选方向：</b>挑 1-2 类和你人设最贴近的，别全抄。</li>
+      <li><b>拆钩子：</b>每张卡片标了钩子类型，点开视频只看前 3 秒。</li>
+      <li><b>套结构：</b>他的视频基本是「钩子 → 一个判断 → 案例或数字 → 金句/引流」。</li>
+      <li><b>差异化：</b>把他的句式拿过来，内容换成你自己的事。</li>
+    </ol>
+  </div>
+
+  <footer>灵感台仅作选题参考 · 视频版权归原作者所有</footer>
+</div>
+</body>
+</html>
