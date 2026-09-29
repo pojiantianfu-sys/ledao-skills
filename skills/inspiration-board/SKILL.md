@@ -226,3 +226,11 @@ print(bu.js(js_code))
 | 踩坑血泪 | "踩过[数量]个坑后总结的" | 陪跑1000个咨询师后，穷的都有同一个毛病 |
 
 详细方法见 `references/hook-taxonomy.md`。
+
+## 配套公开页面（工作台 / 导航）
+
+公开版网页（装好本技能即可使用，无需额外安装）：
+- 使用导航页：https://pojiantianfu-sys.github.io/ledao-skills/乐道技能包-使用导航.html
+- 选题灵感工作台：https://pojiantianfu-sys.github.io/ledao-skills/小红书选题灵感工作台.html
+
+用户说"打开工作台""打开导航""看灵感台页面""打开使用说明"时：先给出上述链接，环境支持打开网页时直接打开对应页面；两页可互相跳转。
