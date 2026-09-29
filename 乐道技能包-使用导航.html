@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>乐道技能包 · 使用导航</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%230f6b5c'/%3E%3Cpath d='M28 34v34a6 6 0 0 0 6 6h32' stroke='white' stroke-width='7' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M42 62h24' stroke='white' stroke-width='7' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#f6f5f1; --paper:#fff; --ink:#1a1a1a; --ink-soft:#5a5a5a;
+    --line:#e6e3db; --accent:#0f6b5c; --accent-soft:#e6f2ef;
+    --tag:#f0ede5; --bubble-line:#d3e6e1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1160px;margin:0 auto;padding:32px 24px 80px}
+
+  .layout{display:flex;gap:24px;align-items:flex-start}
+
+  /* 左侧栏 */
+  .sidebar{flex:0 0 250px;position:sticky;top:24px;background:var(--paper);
+    border:1px solid var(--line);border-radius:14px;padding:26px 22px}
+  .brand{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-soft);font-weight:500}
+  .brand svg{width:18px;height:18px;flex:none}
+  .sidebar h1{font-size:22px;font-weight:700;margin:14px 0 8px;letter-spacing:.5px}
+  .sidebar .sub{font-size:13px;color:var(--ink-soft);line-height:1.6}
+  .sidebar .stats{display:flex;gap:14px;margin:16px 0 4px;flex-wrap:wrap}
+  .sidebar .stat{font-size:12px;color:var(--ink-soft)}
+  .sidebar .stat b{color:var(--ink);font-size:16px;margin-right:3px}
+
+  .side-nav{display:flex;flex-direction:column;gap:8px;margin-top:18px}
+  .side-nav a{display:flex;align-items:center;text-decoration:none;color:var(--ink-soft);
+    font-size:13.5px;padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:var(--bg)}
+  .side-nav a:hover{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
+  .side-nav a .n{color:var(--accent);font-weight:700;margin-right:8px}
+  .side-nav a small{color:var(--ink-soft);opacity:.85}
+
+  .sidebar .foot{margin-top:22px;padding-top:14px;border-top:1px solid var(--line);
+    font-size:12px;color:#aaa;line-height:1.6}
+
+  /* 右侧主区 */
+  .main{flex:1;min-width:0}
+  section{scroll-margin-top:24px}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:6px;flex-wrap:wrap}
+  .sec-num{font-size:13px;color:var(--accent);font-weight:700;letter-spacing:1px}
+  .sec-head h2{font-size:19px;font-weight:700}
+  .sec-desc{font-size:13.5px;color:var(--ink-soft);margin-bottom:16px;line-height:1.6}
+  section + section{margin-top:34px}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:18px 20px 16px;cursor:pointer;user-select:none;position:relative;
+    transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+  .card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 6px 20px rgba(15,107,92,.08)}
+  .card:active{transform:translateY(0) scale(.99)}
+  .card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+  .card h3{font-size:15.5px;font-weight:600;line-height:1.45;flex:1}
+  .go{flex-shrink:0;color:var(--accent);background:var(--accent-soft);width:30px;height:30px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center}
+  .go svg{width:15px;height:15px}
+
+  .bubble{background:var(--accent-soft);border:1px solid var(--bubble-line);border-radius:10px;
+    padding:11px 13px;font-size:13.5px;line-height:1.65;color:#134e4a;margin:12px 0 12px}
+  .bubble .ph{color:var(--accent);font-weight:600}
+
+  .card-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+  .chip{font-size:11.5px;background:var(--tag);color:var(--ink-soft);padding:3px 9px;border-radius:4px}
+  .chip.skill-chip{background:#fff;border:1px solid var(--bubble-line);color:var(--accent)}
+
+  .copy-btn{display:flex;align-items:center;justify-content:center;gap:6px;
+    width:100%;min-height:44px;border:0;border-radius:9px;
+    background:var(--accent);color:#fff;font-size:14px;font-weight:600;
+    cursor:pointer;font-family:inherit;transition:background .12s ease}
+  .copy-btn:hover{background:#0a574a}
+  .copy-btn:active{transform:scale(.99)}
+  .copy-btn svg{width:14px;height:14px}
+
+  /* 左栏：选题灵感台入口 */
+  .board-entry{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);
+    background:var(--accent-soft);border:1px solid var(--bubble-line);border-radius:12px;
+    padding:12px 14px;margin-top:18px;transition:border-color .12s ease,transform .12s ease}
+  .board-entry:hover{border-color:var(--accent);transform:translateY(-1px)}
+  .board-entry .be-icon{flex:none;color:var(--accent)}
+  .board-entry .be-icon svg{width:20px;height:20px}
+  .board-entry .be-text{flex:1;min-width:0}
+  .board-entry b{font-size:14px;font-weight:600;display:block;line-height:1.4;white-space:nowrap}
+  .board-entry small{font-size:12px;color:var(--ink-soft)}
+  .board-entry .go{flex:none}
+
+  footer{margin-top:36px;text-align:center;font-size:12px;color:#aaa}
+
+  .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(16px);
+    background:#1a1a1a;color:#fff;font-size:13.5px;border-radius:10px;
+    padding:11px 20px;opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease;
+    z-index:20;box-shadow:0 8px 24px rgba(26,26,26,.2);max-width:88vw;text-align:center}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  /* 窄屏：左栏折叠为顶部 */
+  @media(max-width:900px){
+    .layout{flex-direction:column}
+    .sidebar{position:static;flex:none;width:100%;padding:22px 20px}
+    .side-nav{flex-direction:row;flex-wrap:wrap;margin-top:14px}
+    .side-nav a{flex:1 1 auto;justify-content:center;min-height:44px;padding:8px 10px}
+    .side-nav a small{display:none}
+    .sidebar .foot{display:none}
+    .main{width:100%}
+  }
+  @media(max-width:760px){
+    .wrap{padding:20px 14px 60px}
+    .sidebar h1{font-size:20px}
+    .grid{grid-template-columns:1fr}
+    .card{padding:16px 16px 14px}
+  }
+  @media(prefers-reduced-motion:reduce){.card{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0f6b5c"/><path d="M10 12v10a2 2 0 0 0 2 2h8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 20h8" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+      乐道技能包
+    </div>
+    <h1>打开豆包，直接许愿</h1>
+    <p class="sub">不用记任何技能名。点卡片复制话术，粘贴给豆包发送，结果就出来了。</p>
+    <div class="stats">
+      <div class="stat"><b>3</b>个场景</div>
+      <div class="stat"><b>12</b>件事</div>
+      <div class="stat"><b>1</b>个动作</div>
+    </div>
+    <nav class="side-nav">
+      <a href="#g1"><span class="n">01</span>不知道发什么 <small>没选题时</small></a>
+      <a href="#g2"><span class="n">02</span>写好了不敢发 <small>发之前</small></a>
+      <a href="#g3"><span class="n">03</span>发了没人来 <small>发之后</small></a>
+    </nav>
+
+    <a class="board-entry" href="小红书选题灵感工作台.html?v=2">
+      <span class="be-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg></span>
+      <span class="be-text"><b>小红书选题灵感台</b><small>已采集爆款 · 点开就能看</small></span>
+      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <div class="foot">已安装乐道技能包即可使用<br>本页只是帮你把话术准备好</div>
+  </aside>
+
+  <main class="main">
+
+    <section id="g1">
+      <div class="sec-head">
+        <span class="sec-num">01</span>
+        <h2>不知道发什么</h2>
+      </div>
+      <p class="sec-desc">没选题、没方向、看到别人爆了想学——从这里开始。</p>
+      <div class="grid">
+
+        <div class="card" tabindex="0" data-copy="今天有什么选题？给我推荐一条适合我的：从最近30天对标账号＋全网爆款里挑，给出我的版本（标题＋钩子＋内容方向）、原标题（原平台＋原账号＋原赞数）、为什么推荐、适合视频还是图文。">
+          <div class="card-top">
+            <h3>每天一个选题</h3>
+            <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span>
+          </div>
+          <p class="bubble">今天有什么选题？给我推荐一条适合我的：从最近30天对标账号＋全网爆款里挑，给出<span class="ph">我的版本（标题＋钩子＋内容方向）</span>、原标题（原平台＋原账号＋原赞数）、为什么推荐、适合视频还是图文。</p>
+          <div class="card-meta"><span class="chip">日更必备</span><span class="chip">每天都有</span><span class="chip skill-chip">技能 · daily-picks</span></div>
+          <button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>复制这句话</button>
+        </div>
+
+        <div class="card" tabindex="0" data-copy="帮我判断一下这个账号（内容）值不值得对标：〔贴账号名/标题/链接〕。我的定位是〔你的赛道＋服务谁＋客单价〕。先给结论：值得对标／不值得对标／不可放大／待补证据，再给最关键的原因。">
+          <div class="card-top">
+            <h3>判断值不值得对标</h3>
+            <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M8 11h6M11 8v6"/></svg></span>
+          </div>
+          <p class="bubble">帮我判断一下这个账号（内容）值不值得对标：〔贴账号名/标题/链接〕。我的定位是〔你的赛道＋服务谁＋客单价〕。先给结论：<span class="ph">值得对标／不值得对标／不可放大／待补证据</span>，再给最关键的原因。</p>
+          <div class="card-meta"><span class="chip">先筛选再学</span><span class="chip">防止抄错</span><span class="chip skill-chip">技能 · benchmark-advisor</span></div>
+          <button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>复制这句话</button>
+        </div>
+
+        <div class="card" tabindex="0" data-copy="帮我把这条洗成我的风格：〔贴原标题或链接〕。原句式不要改，换成我的人群和真实素材，给最终版（标题＋口播/图文＋形式），不要AI味。">
+          <div class="card-top">
+            <h3>洗一条爆款成自己的</h3>
+            <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6L12 3z"/><path d="M19 15l.9 2.6L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.4L19 15z"/></svg></span>
+          </div>
+          <p class="bubble">帮我把这条洗成我的风格：〔贴原标题或链接〕。<span class="ph">原句式不要改</span>，换成我的人群和真实素材，给最终版（标题＋口播/图文＋形式），不要AI味。</p>
+          <div class="card-meta"><span class="chip">借爆款句式</span><span class="chip">要真实素材</span><span class="chip skill-chip">技能 · viral-rewrite · pattern-matching</span></div>
+          <button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>复制这句话</button>
+        </div>
+
+        <div class="card" tabindex="0" data-copy="帮我找3-5个值得对标的账号：我的定位是〔你的赛道＋服务谁＋客单价＋主平台〕，我做的是〔B端教从业者变现／C端直接做内容给客户〕。只要最近30天有百赞以上爆款的，跨行业同打法优先，列出每个账号的特点和值得对标的原因。">
+          <div class="card-top">
+            <h3>帮我找对标账号</h3>
+            <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></span>
+          </div>
+          <p class="bubble">帮我找3-5个值得对标的账号：我的定位是〔你的赛道＋服务谁＋客单价＋主平台〕，我做的是〔B端教从业者变现／C端直接做内容给客户〕。只要<span class="ph">最近30天有百赞以上爆款</span>的，跨行业同打法优先，列出每个账号的特点和值得对标的原因。</p>
+          <div class="card-meta"><span class="chip">没对标先用这个</span><span class="chip">跨行业优先</span><span class="chip skill-chip">技能 · benchmark-finder</span></div>
+          <button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>复制这句话</button>
+        </div>
+
+        <div class="card" tabindex="0" data-copy="帮我把这条内容起几个标题：〔粘贴内容或要点〕。给5-8个备选，覆盖情绪冲击、反常识、身份代入、数字结果等类型，标出你最推荐的一个和理由。">
+          <div class="card-top">
+            <h3>起个好标题</h3>
+            <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16M4 15h16M10 3L8 21M16 3l-2 18"/></svg></span>
+          </div>
+          <p class="bubble">帮我把这条内容起几个标题：〔粘贴内容或要点〕。给5-8个备选，覆盖<span class="ph">情绪冲击、反常识、身份代入、数字结果</span>等类型，标出你最推荐的一个和理由。</p>
+          <div class="card-meta"><span class="chip">多备选</span><span class="chip">带推荐理由</span><span class="chip skill-chip">技能 · dbs-xhs-title</span></div>
+          <button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>复制这句话</button>
+        </div>
+
+        <div class="card" tabindex="0" data-copy="我没有思路，帮我原创一篇内容：我的定位是〔赛道＋服务谁＋产品〕，我想讲〔主题或观点〕，我有的真实素材是〔案例/经历/数据〕。先给我方向和结构，确认后再写成完整稿，不要编造任何东西。">
+          <div class="card-top">
+            <h3>原创内容辅助</h3>
+            <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><path d="M14 2v6h6"/><path d="M12 18v-6M9 15h6"/></svg></span>
+          </div>
+          <p class="bubble">我没有思路，帮我原创一篇内容：我的定位是〔赛道＋服务谁＋产品〕，我想讲〔主题或观点〕，我有的真实素材是〔案例/经历/数据〕。先给我方向和结构，确认后再写成完整稿，<span class="ph">不要编造任何东西</span>。</p>
+          <div class="card-meta"><span class="chip">先定方向再写</span><span class="chip">不编造</span><span class="chip skill-chip">技能 · toc-high-ticket-content</span></div>
+          <button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>复制这句话</button>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="g2">
+      <div class="sec-head">
+        <span class="sec-num">02</span>
+        <h2>写好了不敢发</h2>
+      </div>
+      <p class="sec-desc">稿子在手，拿不准能不能发、有没有风险、要不要改——发之前先让它把关。</p>
+      <div class="grid">
+
+        <div class="card" tabindex="0" data-copy="这篇笔记（视频）怎么样？能不能发？帮我从流量、客户精准度、高客单承接、真实观点、平台风险五个维度诊断一下，最后告诉我可不可以直接发。">
+          <div class="card-top">
+            <h3>看看内容能不能发</h3>
+            <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><path d="M14 2v6h6"/><path d="M9 14h6M9 17h4"/></svg></span>
+          </div>
+          <p class="bubble">这篇笔记（视频）怎么样？能不能发？帮我从<span class="ph">流量、客户精准度、高客单承接、真实观点、平台风险</span>五个维度诊断一下，最后告诉我可不可以直接发。</p>
+          <div class="card-meta"><span class="chip">五维诊断</span><span class="chip">给结论</span><span class="chip skill-chip">技能 · toc-high-ticket-content</span></div>
+          <button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>复制这句话</button>
+        </div>
+
+        <div class="card" tabindex="0" data-copy="帮我把这条内容做一次风险检查：〔粘贴内容或标题〕。结合我的账号身份和上下文判断，把高风险的地方列出来（原句、风险类型、为什么、怎么改），改的时候保留冲突和传播力，最后告诉我已降低明显风险但最终审核由平台决定。">
+          <div class="card-top">
+            <h3>查内容风险</h3>
+            <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4M12 16h.01"/></svg></span>
+          </div>
+          <p class="bubble">帮我把这条内容做一次风险检查：〔粘贴内容或标题〕。结合我的账号身份和上下文判断，把高风险的地方列出来（<span class="ph">原句、风险类型、为什么、怎么改</span>），改的时候保留冲突和传播力，最后告诉我已降低明显风险但最终审核由平台决定。</p>
+          <div class="card-meta"><span class="chip">发前自查</span><span class="chip">保传播力</span><span class="chip skill-chip">技能 · toc-high-ticket-content · risk</span></div>
+          <button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>复制这句话</button>
+        </div>
+
+        <div class="card" tabindex="0" data-copy="帮我把这篇改成可以直接发布的完整版：〔粘贴你的原文〕。保留我自己的观点和真实案例，能局部改就不要推翻，改完标注风险提醒。">
+          <div class="card-top">
+            <h3>改成一版能发的</h3>
+            <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
+          </div>
+          <p class="bubble">帮我把这篇改成可以直接发布的完整版：〔粘贴你的原文〕。<span class="ph">保留我自己的观点和真实案例</span>，能局部改就不要推翻，改完标注风险提醒。</p>
+          <div class="card-meta"><span class="chip">保留原观点</span><span class="chip">能改就不推翻</span><span class="chip skill-chip">技能 · toc-high-ticket-content</span></div>
+          <button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>复制这句话</button>
+        </div>
+
+        <div class="card" tabindex="0" data-copy="帮我检查这条内容有没有AI味：〔粘贴你的稿子〕。把明显像AI写的句子标出来（排比、金句堆砌、'底层逻辑''赋能'这类词、每段都反转），改成像我本人会说的话，不要改变事实和观点。">
+          <div class="card-top">
+            <h3>去AI味检查</h3>
+            <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg></span>
+          </div>
+          <p class="bubble">帮我检查这条内容有没有AI味：〔粘贴你的稿子〕。把明显像AI写的句子标出来（<span class="ph">排比、金句堆砌、'底层逻辑''赋能'这类词、每段都反转</span>），改成像我本人会说的话，不要改变事实和观点。</p>
+          <div class="card-meta"><span class="chip">AI味检测</span><span class="chip">改成你自己</span><span class="chip skill-chip">技能 · de-ai</span></div>
+          <button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>复制这句话</button>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="g3">
+      <div class="sec-head">
+        <span class="sec-num">03</span>
+        <h2>发了没人来</h2>
+      </div>
+      <p class="sec-desc">内容发出去了，没播放、没互动、没客资——先找卡点，再改，别瞎猜。</p>
+      <div class="grid">
+
+        <div class="card" tabindex="0" data-copy="我发了这篇内容，数据是〔播放/阅读、点赞、收藏、评论、关注、私信〕，帮我复盘为什么效果不好，问题卡在哪一层（流量／阅读承接／人群精准度／主页承接／转化／产品匹配），下一篇最值得改什么。">
+          <div class="card-top">
+            <h3>复盘发布数据</h3>
+            <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-7"/></svg></span>
+          </div>
+          <p class="bubble">我发了这篇内容，数据是〔播放/阅读、点赞、收藏、评论、关注、私信〕，帮我复盘为什么效果不好，<span class="ph">问题卡在哪一层</span>（流量／阅读承接／人群精准度／主页承接／转化／产品匹配），下一篇最值得改什么。</p>
+          <div class="card-meta"><span class="chip">找卡点</span><span class="chip">不乱归因</span><span class="chip skill-chip">技能 · toc-high-ticket-content · review</span></div>
+          <button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>复制这句话</button>
+        </div>
+
+        <div class="card" tabindex="0" data-copy="我目前的问题是没有客资，这是我最近发的内容标题：〔粘贴你的标题〕。从获客的角度给我一些建议，出一份完整的精准获客复盘与行动报告。需要我提供什么，你继续问我。">
+          <div class="card-top">
+            <h3>没客资，出获客报告</h3>
+            <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/><path d="M3 8l9 6 9-6"/></svg></span>
+          </div>
+          <p class="bubble">我目前的问题是没有客资，这是我最近发的内容标题：〔粘贴你的标题〕。从获客的角度给我一些建议，出一份完整的<span class="ph">精准获客复盘与行动报告</span>。需要我提供什么，你继续问我。</p>
+          <div class="card-meta"><span class="chip">精准客户</span><span class="chip">带行动清单</span><span class="chip skill-chip">技能 · toc-high-ticket-content · report</span></div>
+          <button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>复制这句话</button>
+        </div>
+
+      </div>
+    </section>
+
+    <footer>乐道技能包 · 已安装即可使用 · 本页只是帮你把话术准备好</footer>
+  </main>
+
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</div>
+
+<script>
+(function () {
+  var root = document.querySelector('.layout');
+  var toast = document.getElementById('toast');
+  var toastTimer = null;
+
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add('show');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 2200);
+  }
+
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text).then(function () { return true; });
+    }
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    return Promise.resolve(ok);
+  }
+
+  root.addEventListener('click', function (e) {
+    if (e.target.closest('a')) return;
+    var card = e.target.closest('.card');
+    if (!card) return;
+    var text = card.getAttribute('data-copy');
+    if (!text) return;
+    copyText(text).then(function (ok) {
+      showToast(ok ? '已复制 · 去豆包粘贴发送' : '复制失败，请长按手动复制');
+    });
+  });
+
+  root.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    var card = e.target.closest('.card');
+    if (!card) return;
+    e.preventDefault();
+    var text = card.getAttribute('data-copy');
+    if (!text) return;
+    copyText(text).then(function (ok) {
+      showToast(ok ? '已复制 · 去豆包粘贴发送' : '复制失败，请长按手动复制');
+    });
+  });
+})();
+</script>
+</body>
+</html>
