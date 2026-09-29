@@ -34,4 +34,6 @@ description: AI重讲洗稿法。专洗"AI+赛道"差异化选题：原爆款句
 
 ## 衔接
 
-原爆款来源：`daily-picks` 每日推荐 / `pattern-matching` 对版表。洗后可用 `de-ai` 复查AI味。
+原爆款来源：`daily-picks` 每日推荐 / `pattern-matching` 对版表。
+- **起标题**（可选衔接，不依赖 dbs）：若已安装 `dbs-xhs-title` → 调用它生成标题候选；未安装 → 用 `inspiration-board` 内置的 6 类小红书爆款标题公式兜底。
+- **洗后质检**：`de-ai`（本包自带）复查 AI 味；若另装了 `dbs-ai-check` 也可调用。
