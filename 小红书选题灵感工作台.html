@@ -15,23 +15,18 @@
   body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
     background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
   .wrap{max-width:1180px;margin:0 auto;padding:32px 24px 80px}
-
-  /* 返回乐道技能包导航 */
   .nav-back{position:fixed;top:16px;right:16px;z-index:60;display:inline-flex;align-items:center;gap:6px;
     background:var(--accent);color:#fff;font-size:13px;font-weight:600;text-decoration:none;
     padding:0 16px;min-height:44px;border-radius:22px;box-shadow:0 4px 16px rgba(15,107,92,.25);
     font-family:inherit;transition:background .12s ease}
   .nav-back:hover{background:#0a574a}
   .nav-back svg{width:13px;height:13px}
-
-  header{background:var(--paper);border:1px solid var(--line);border-radius:14px;
-    padding:28px 32px}
+  header{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:28px 32px}
   header h1{font-size:24px;font-weight:700}
   header .sub{color:var(--ink-soft);font-size:14px;margin-top:6px}
   header .stats{margin-top:16px;display:flex;gap:24px;flex-wrap:wrap}
   header .stat{font-size:13px;color:var(--ink-soft)}
   header .stat b{color:var(--ink);font-size:18px;margin-right:4px}
-
   nav{margin-top:24px;display:flex;flex-wrap:wrap;gap:8px;position:sticky;top:0;
     background:var(--bg);padding:12px 0;z-index:10}
   nav a{text-decoration:none;color:var(--ink-soft);font-size:13px;
@@ -39,17 +34,14 @@
     display:inline-flex;align-items:center;min-height:44px}
   nav a:hover{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
   nav a .n{color:var(--accent);font-weight:600;margin-right:4px}
-
   section{margin-top:32px}
   .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:6px;flex-wrap:wrap}
   .sec-num{font-size:13px;color:var(--accent);font-weight:700;letter-spacing:1px}
   .sec-head h2{font-size:19px;font-weight:700}
   .sec-fit{font-size:13px;color:var(--warn);margin-left:auto}
   .sec-desc{font-size:13.5px;color:var(--ink-soft);margin-bottom:18px;max-width:760px;line-height:1.6}
-
   .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
   @media(max-width:760px){.grid{grid-template-columns:1fr}}
-
   .card{background:var(--paper);border:1px solid var(--line);border-radius:12px;
     padding:20px 22px;text-decoration:none;color:var(--ink);
     display:flex;flex-direction:column;gap:10px;transition:.15s;position:relative}
@@ -61,17 +53,13 @@
     display:flex;align-items:center;justify-content:center}
   .card p{font-size:13.5px;color:var(--ink-soft);line-height:1.6}
   .card-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
-  .chip{font-size:11.5px;background:var(--tag);color:var(--ink-soft);
-    padding:2px 8px;border-radius:4px}
+  .chip{font-size:11.5px;background:var(--tag);color:var(--ink-soft);padding:2px 8px;border-radius:4px}
   .chip.hook{background:var(--warn-soft);color:var(--warn)}
   .chip.date{background:var(--accent-soft);color:var(--accent);font-weight:700}
   .chip.likes{color:var(--accent);font-weight:600}
-
-  .howto{margin-top:48px;background:var(--paper);border:1px solid var(--line);
-    border-radius:14px;padding:26px 30px}
+  .howto{margin-top:48px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px 30px}
   .howto h2{font-size:16px;margin-bottom:12px}
-  .howto ol{padding-left:20px;font-size:14px;color:var(--ink-soft);
-    display:flex;flex-direction:column;gap:8px}
+  .howto ol{padding-left:20px;font-size:14px;color:var(--ink-soft);display:flex;flex-direction:column;gap:8px}
   .howto b{color:var(--ink)}
   footer{margin-top:30px;text-align:center;font-size:12px;color:#aaa}
 </style>
@@ -82,17 +70,16 @@
   乐道技能包导航
 </a>
 <div class="wrap">
-
 <header>
   <h1>小红书选题灵感工作台</h1>
-  <div class="sub">最近30天 · 百赞以上 · 按内容方向分类 · 直接点链接看原文</div>
+  <div class="sub">小红书爆款选题钩子库 · 按内容方向分类 · 学句式、套自己的事 · 直接点链接看原文</div>
   <div class="stats">
     <div class="stat"><b>5</b>个内容方向</div>
-    <div class="stat"><b>25+</b>条爆款</div>
-    <div class="stat"><b>11</b>个对标博主</div>
+    <div class="stat"><b>25+</b>条爆款示例</div>
+    <div class="stat"><b>11</b>位博主案例</div>
+    <div class="stat"><b>钩子</b>即模板</div>
   </div>
 </header>
-
 <nav>
   <a href="#d1"><span class="n">01</span>反常识认知</a>
   <a href="#d2"><span class="n">02</span>做IP方法论</a>
@@ -100,8 +87,6 @@
   <a href="#d4"><span class="n">04</span>AI+商业</a>
   <a href="#d5"><span class="n">05</span>搞钱变现</a>
 </nav>
-
-<!-- 方向1：反常识认知 -->
 <section id="d1">
   <div class="sec-head">
     <span class="sec-num">01</span>
@@ -114,46 +99,32 @@
       <div class="card-top"><h3>教培老师越拍自己，越火不了！</h3><div class="go">→</div></div>
       <p>反常识：你以为拍自己涨粉，其实越拍自己越没人看。钩子是"越X越Y"的否定结构。</p>
       <div class="card-meta">
-        <span class="chip date">08-26</span>
-        <span class="chip hook">反常识否定</span>
-        <span class="chip">黄洁西</span>
-        <span class="chip likes">630赞</span>
+        <span class="chip date">08-26</span><span class="chip hook">反常识否定</span><span class="chip">黄洁西</span><span class="chip likes">630赞</span>
       </div>
     </a>
     <a class="card" href="https://www.xiaohongshu.com/search_result/6a9570be000000000303f9bb" target="_blank">
       <div class="card-top"><h3>你的内容正在替你吸引穷客户…</h3><div class="go">→</div></div>
       <p>反常识：你以为内容好就行，其实内容风格直接决定你吸引什么价位的客户。钩子是"你的X正在替你Y"。</p>
       <div class="card-meta">
-        <span class="chip date">08-31</span>
-        <span class="chip hook">反常识否定</span>
-        <span class="chip">陈贝贝</span>
-        <span class="chip likes">118赞</span>
+        <span class="chip date">08-31</span><span class="chip hook">反常识否定</span><span class="chip">陈贝贝</span><span class="chip likes">118赞</span>
       </div>
     </a>
     <a class="card" href="https://www.xiaohongshu.com/search_result/6ab540ea0000000014032a78" target="_blank">
       <div class="card-top"><h3>做账号用AI写文案，就是把最烂的文案当宝贝</h3><div class="go">→</div></div>
       <p>反常识：你以为用AI写文案省时间，其实是把最烂的文案当宝贝。钩子是"用X就是Y"的否定结构。</p>
       <div class="card-meta">
-        <span class="chip date">09-25</span>
-        <span class="chip hook">反常识否定</span>
-        <span class="chip">黄洁西</span>
-        <span class="chip likes">33赞</span>
+        <span class="chip date">09-25</span><span class="chip hook">反常识否定</span><span class="chip">黄洁西</span><span class="chip likes">33赞</span>
       </div>
     </a>
     <a class="card" href="https://www.xiaohongshu.com/search_result/6a89304800000000380008dc" target="_blank">
       <div class="card-top"><h3>可能是全网第一个被纳瓦尔拉黑的中文博主</h3><div class="go">→</div></div>
       <p>反常识+自曝：被大佬拉黑不是丢人的事，是值得晒的勋章。钩子是"全网第一个被X的Y"。</p>
       <div class="card-meta">
-        <span class="chip date">08-22</span>
-        <span class="chip hook">反常识+自曝</span>
-        <span class="chip">dontbesilent</span>
-        <span class="chip likes">528赞</span>
+        <span class="chip date">08-22</span><span class="chip hook">反常识+自曝</span><span class="chip">dontbesilent</span><span class="chip likes">528赞</span>
       </div>
     </a>
   </div>
 </section>
-
-<!-- 方向2：做IP方法论 -->
 <section id="d2">
   <div class="sec-head">
     <span class="sec-num">02</span>
@@ -166,56 +137,39 @@
       <div class="card-top"><h3>如何做一个以赚钱为目的的账号？（喂饭版）</h3><div class="go">→</div></div>
       <p>钩子："如何做一个以赚钱为目的的账号"——直接点出目标是赚钱，不是涨粉。加"喂饭版"降低门槛。</p>
       <div class="card-meta">
-        <span class="chip date">08-04</span>
-        <span class="chip hook">干货教学</span>
-        <span class="chip">鲁细细</span>
-        <span class="chip likes">1625赞</span>
+        <span class="chip date">08-04</span><span class="chip hook">干货教学</span><span class="chip">鲁细细</span><span class="chip likes">1625赞</span>
       </div>
     </a>
     <a class="card" href="https://www.xiaohongshu.com/search_result/6ab107550000000034016b5f" target="_blank">
       <div class="card-top"><h3>如何在2026最后100天，做出一个万粉账号？</h3><div class="go">→</div></div>
       <p>钩子：时间紧迫感（最后100天）+ 具体目标（万粉账号）。适合蹭时间节点。</p>
       <div class="card-meta">
-        <span class="chip date">09-22</span>
-        <span class="chip hook">时间紧迫+目标</span>
-        <span class="chip">鲁细细</span>
-        <span class="chip likes">592赞</span>
+        <span class="chip date">09-22</span><span class="chip hook">时间紧迫+目标</span><span class="chip">鲁细细</span><span class="chip likes">592赞</span>
       </div>
     </a>
     <a class="card" href="https://www.xiaohongshu.com/search_result/6a8d9d5a000000002003c027" target="_blank">
       <div class="card-top"><h3>教培老师，拍这5类视频，家长会主动来找你！</h3><div class="go">→</div></div>
       <p>钩子：具体数字（5类）+ 结果（家长会主动来找你）。结构是"拍这X类，Y就会Z"。</p>
       <div class="card-meta">
-        <span class="chip date">08-25</span>
-        <span class="chip hook">数字+结果</span>
-        <span class="chip">黄洁西</span>
-        <span class="chip likes">1366赞</span>
+        <span class="chip date">08-25</span><span class="chip hook">数字+结果</span><span class="chip">黄洁西</span><span class="chip likes">1366赞</span>
       </div>
     </a>
     <a class="card" href="https://www.xiaohongshu.com/search_result/6aa2a86d0000000029015d62" target="_blank">
       <div class="card-top"><h3>你的同行最怕你拍这100条视频.</h3><div class="go">→</div></div>
       <p>钩子：同行视角（最怕你拍）+ 大数字（100条）。结构是"你的同行最怕你拍这X条"。</p>
       <div class="card-meta">
-        <span class="chip date">09-19</span>
-        <span class="chip hook">同行视角+大数字</span>
-        <span class="chip">黄洁西</span>
-        <span class="chip likes">310赞</span>
+        <span class="chip date">09-19</span><span class="chip hook">同行视角+大数字</span><span class="chip">黄洁西</span><span class="chip likes">310赞</span>
       </div>
     </a>
     <a class="card" href="https://www.xiaohongshu.com/search_result/6a8acaf700000000230110e2" target="_blank">
       <div class="card-top"><h3>我如何在两年涨粉100万</h3><div class="go">→</div></div>
       <p>钩子：自曝结果（两年100万粉）。结构是"我如何在X时间做到Y"。</p>
       <div class="card-meta">
-        <span class="chip date">08-23</span>
-        <span class="chip hook">自曝结果</span>
-        <span class="chip">dontbesilent</span>
-        <span class="chip likes">506赞</span>
+        <span class="chip date">08-23</span><span class="chip hook">自曝结果</span><span class="chip">dontbesilent</span><span class="chip likes">506赞</span>
       </div>
     </a>
   </div>
 </section>
-
-<!-- 方向3：高客单成交 -->
 <section id="d3">
   <div class="sec-head">
     <span class="sec-num">03</span>
@@ -228,36 +182,25 @@
       <div class="card-top"><h3>如何吸引高端客户看一眼就买</h3><div class="go">→</div></div>
       <p>钩子：具体结果（看一眼就买）。结构是"如何吸引X客户Y就Z"。</p>
       <div class="card-meta">
-        <span class="chip date">09-14</span>
-        <span class="chip hook">具体结果</span>
-        <span class="chip">陈贝贝</span>
-        <span class="chip likes">1303赞</span>
+        <span class="chip date">09-14</span><span class="chip hook">具体结果</span><span class="chip">陈贝贝</span><span class="chip likes">1303赞</span>
       </div>
     </a>
     <a class="card" href="https://www.xiaohongshu.com/search_result/6a93f9a10000000021027a26" target="_blank">
       <div class="card-top"><h3>如何让高端客户一秒上头</h3><div class="go">→</div></div>
       <p>钩子：情绪冲击（一秒上头）。结构是"如何让X一秒Y"。</p>
       <div class="card-meta">
-        <span class="chip date">08-30</span>
-        <span class="chip hook">情绪冲击</span>
-        <span class="chip">陈贝贝</span>
-        <span class="chip likes">357赞</span>
+        <span class="chip date">08-30</span><span class="chip hook">情绪冲击</span><span class="chip">陈贝贝</span><span class="chip likes">357赞</span>
       </div>
     </a>
     <a class="card" href="https://www.xiaohongshu.com/search_result/6a992a8600000000260192fc" target="_blank">
       <div class="card-top"><h3>让高端客户刷到就买的人，都懂高效截胡</h3><div class="go">→</div></div>
       <p>钩子：秘密感（高效截胡）。结构是"让X刷到就Y的人，都懂Z"。</p>
       <div class="card-meta">
-        <span class="chip date">09-08</span>
-        <span class="chip hook">秘密感</span>
-        <span class="chip">陈贝贝</span>
-        <span class="chip likes">108赞</span>
+        <span class="chip date">09-08</span><span class="chip hook">秘密感</span><span class="chip">陈贝贝</span><span class="chip likes">108赞</span>
       </div>
     </a>
   </div>
 </section>
-
-<!-- 方向4：AI+商业 -->
 <section id="d4">
   <div class="sec-head">
     <span class="sec-num">04</span>
@@ -270,76 +213,53 @@
       <div class="card-top"><h3>我把AI工具免费公开，为什么更赚钱？</h3><div class="go">→</div></div>
       <p>钩子：反常识（免费公开反而更赚钱）。结构是"我把X免费公开，为什么更Y"。</p>
       <div class="card-meta">
-        <span class="chip date">09-27</span>
-        <span class="chip hook">反常识</span>
-        <span class="chip">dontbesilent</span>
-        <span class="chip likes">162赞</span>
+        <span class="chip date">09-27</span><span class="chip hook">反常识</span><span class="chip">dontbesilent</span><span class="chip likes">162赞</span>
       </div>
     </a>
     <a class="card" href="https://www.xiaohongshu.com/search_result/6a884857000000002b001d5c" target="_blank">
       <div class="card-top"><h3>一条视频自查90%没流量的原因？新推流机制</h3><div class="go">→</div></div>
       <p>钩子：具体数字（90%）+ 解决方案（新推流机制）。结构是"一条视频自查X%没Y的原因"。</p>
       <div class="card-meta">
-        <span class="chip date">08-21</span>
-        <span class="chip hook">数字+解决方案</span>
-        <span class="chip">黄洁西</span>
-        <span class="chip likes">379赞</span>
+        <span class="chip date">08-21</span><span class="chip hook">数字+解决方案</span><span class="chip">黄洁西</span><span class="chip likes">379赞</span>
       </div>
     </a>
     <a class="card" href="https://www.shanghaishanliangmao.com/" target="_blank">
       <div class="card-top"><h3>1篇笔记变现25万，小红书OPC商业模式太牛了！！</h3><div class="go">→</div></div>
-      <p>AI+小红书一人轻资产公司（OPC）：搜索流量+AI工作流+最小变现闭环。B端教创业者用AI变现，钩子是"一篇笔记变现X万"。</p>
+      <p>AI+小红书一人轻资产公司（OPC）：搜索流量+AI工作流+最小变现闭环。钩子是"一篇笔记变现X万"。</p>
       <div class="card-meta">
-        <span class="chip hook">数字暴击</span>
-        <span class="chip">谢无敌</span>
-        <span class="chip">AI+OPC变现</span>
-        <span class="chip">全网候选</span>
+        <span class="chip hook">数字暴击</span><span class="chip">谢无敌</span><span class="chip">AI+OPC变现</span><span class="chip">全网候选</span>
       </div>
     </a>
     <a class="card" href="https://m.sohu.com/a/1023762482_122552380/" target="_blank">
       <div class="card-top"><h3>帮实体老板/知识IP/超级个体，用AI+小红书精准获客</h3><div class="go">→</div></div>
       <p>B端定位：低粉丝高变现，AI+小红书解决获客。钩子是"帮X用AI+小红书Y"的服务体。</p>
       <div class="card-meta">
-        <span class="chip hook">B端获客</span>
-        <span class="chip">大李流量笔记</span>
-        <span class="chip">AI+精准获客</span>
-        <span class="chip">全网候选</span>
+        <span class="chip hook">B端获客</span><span class="chip">大李流量笔记</span><span class="chip">AI+精准获客</span><span class="chip">全网候选</span>
       </div>
     </a>
     <a class="card" href="https://www.iesdouyin.com/share/video/7561745568918146342" target="_blank">
       <div class="card-top"><h3>高客单该打造哪种IP？创始人IP/老板IP/专家IP</h3><div class="go">→</div></div>
-      <p>AI+IP短视频成交文案体系，高客单私教陪跑（59800起）。钩子是"高客单该打造哪种X"的选择题式反问。</p>
+      <p>AI+IP短视频成交文案体系，高客单私教陪跑。钩子是"高客单该打造哪种X"的选择题式反问。</p>
       <div class="card-meta">
-        <span class="chip hook">选择题反问</span>
-        <span class="chip">三把刀老师</span>
-        <span class="chip">AI+IP成交</span>
-        <span class="chip">全网候选</span>
+        <span class="chip hook">选择题反问</span><span class="chip">三把刀老师</span><span class="chip">AI+IP成交</span><span class="chip">全网候选</span>
       </div>
     </a>
     <a class="card" href="https://www.iesdouyin.com/share/video/7686319239451479334" target="_blank">
       <div class="card-top"><h3>700万的二手房，她用AI在小红书秒卖了</h3><div class="go">→</div></div>
       <p>AI一人公司/超级个体案例：AI批量产软文+素人铺量精准获客。钩子是"X万的Y，她用AI在小红书Z"。</p>
       <div class="card-meta">
-        <span class="chip hook">案例拆解</span>
-        <span class="chip">群响toby</span>
-        <span class="chip">AI一人公司</span>
-        <span class="chip">全网候选</span>
+        <span class="chip hook">案例拆解</span><span class="chip">群响toby</span><span class="chip">AI一人公司</span><span class="chip">全网候选</span>
       </div>
     </a>
     <a class="card" href="https://www.iesdouyin.com/share/video/7656789156311714277" target="_blank">
       <div class="card-top"><h3>永远不要对低端客户，过度服务</h3><div class="go">→</div></div>
       <p>高客单IP变现教练：小红书13万粉，陪跑400+商业IP。钩子是"永远不要对X，过度Y"的断言式否定。</p>
       <div class="card-meta">
-        <span class="chip hook">断言式否定</span>
-        <span class="chip">扶瑶直上</span>
-        <span class="chip">高客单IP</span>
-        <span class="chip">全网候选</span>
+        <span class="chip hook">断言式否定</span><span class="chip">扶瑶直上</span><span class="chip">高客单IP</span><span class="chip">全网候选</span>
       </div>
     </a>
   </div>
 </section>
-
-<!-- 方向5：搞钱变现 -->
 <section id="d5">
   <div class="sec-head">
     <span class="sec-num">05</span>
@@ -352,66 +272,21 @@
       <div class="card-top"><h3>博主赚钱有4个层次，你在哪一层？</h3><div class="go">→</div></div>
       <p>钩子：分层（4个层次）+ 互动（你在哪一层）。结构是"X有N个层次，你在哪一层"。</p>
       <div class="card-meta">
-        <span class="chip date">09-27</span>
-        <span class="chip hook">分层+互动</span>
-        <span class="chip">鲁细细</span>
-        <span class="chip likes">156赞</span>
+        <span class="chip date">09-27</span><span class="chip hook">分层+互动</span><span class="chip">鲁细细</span><span class="chip likes">156赞</span>
       </div>
     </a>
   </div>
 </section>
-
-<!-- 每日推荐 -->
-<section id="daily">
-  <div class="sec-head">
-    <span class="sec-num">★</span>
-    <h2>每日推荐</h2>
-    <span class="sec-fit">主推1条 + 备选2条 · 注明视频/图文</span>
-  </div>
-  <p class="sec-desc">每天从"对标爆款 + 全网爆款"里挑最值得做的1条改写，标注形式。视频=钩子强/口播/情绪冲击；图文=清单/收藏/避坑/方法论拆解。</p>
-  <div class="grid">
-    <a class="card hot" href="#" onclick="alert('主推选题：可直接开写完整脚本')">
-      <div class="card-top"><h3>我如何在1万粉做到成交破千万</h3><div class="go">→</div></div>
-      <p><b>原标题：</b>我如何在两年涨粉100万（dontbesilent · 小红书 · 506赞）<br><b>为什么推荐：</b>自曝结果反差最狠——原博两年100万粉，你的"1万粉成交8位数"数字更稀缺、更反常识，直接命中"低粉高变现"目标人群。内容拆3个关键动作：筛选客户/高客单产品/信任闭环，结尾引导测评获客。</p>
-      <div class="card-meta">
-        <span class="chip hook">自曝结果</span>
-        <span class="chip">数字暴击</span>
-        <span class="chip" style="background:#0f6b5c;color:#fff;font-weight:700">形式：视频</span>
-      </div>
-    </a>
-    <a class="card" href="#" onclick="alert('备选1：可改写成小红书图文笔记')">
-      <div class="card-top"><h3>你的内容正在替你吸引低价客户…</h3><div class="go">→</div></div>
-      <p><b>原标题：</b>你的内容正在替你吸引穷客户…（陈贝贝 · 小红书 · 118赞）<br><b>为什么推荐：</b>高客单筛选的核心痛点——内容风格决定客户价位，和你高客单筛选逻辑完全同频。洗法：只换人群词，原句式"你的X正在替你Y"一字不动。</p>
-      <div class="card-meta">
-        <span class="chip hook">反常识否定</span>
-        <span class="chip" style="background:#0f6b5c;color:#fff;font-weight:700">形式：图文</span>
-      </div>
-    </a>
-    <a class="card" href="#" onclick="alert('备选2：AI重讲法，需确认“免费公开测评”是你真实晒过的动作')">
-      <div class="card-top"><h3>我把AI测评免费公开，为什么更赚钱？</h3><div class="go">→</div></div>
-      <p><b>原标题：</b>我把AI工具免费公开，为什么更赚钱？（dontbesilent · 小红书 · 162赞）<br><b>为什么推荐：</b>AI重讲法示范——原博把AI工具免费公开反而更赚钱，你换成"AI测评免费公开"，就是你"AI+咨询师"差异化选题；需确认"免费公开测评"是你真实晒过的动作。</p>
-      <div class="card-meta">
-        <span class="chip hook">反常识</span>
-        <span class="chip">AI重讲</span>
-        <span class="chip" style="background:#0f6b5c;color:#fff;font-weight:700">形式：视频</span>
-      </div>
-    </a>
-  </div>
-</section>
-
-<!-- 怎么用 -->
 <div class="howto">
   <h2>怎么用这个工作台</h2>
   <ol>
     <li><b>挑一个方向</b>：看哪个方向的钩子你觉得"像我会说的话"</li>
-    <li><b>点进原文</b>：看完整内容，理解这个钩子是怎么展开的</li>
+    <li><b>点进原文</b>：看完整内容，理解这个钩子是怎么展开的（无直链的条目已给平台/站内搜索，搜标题可找原文）</li>
     <li><b>套你的事</b>：用同样的句式，把内容换成你自己的产品/经历/数据</li>
     <li><b>加AI元素</b>：如果你的差异化是AI+某个赛道，在原选题前面加"AI"，或者把人群换成你的受众</li>
   </ol>
 </div>
-
-<footer>小红书选题灵感工作台 · 最近30天 · 百赞以上</footer>
-
+<footer>小红书选题灵感工作台 · 爆款钩子句式库 · 学句式、套自己的事</footer>
 </div>
 </body>
 </html>
